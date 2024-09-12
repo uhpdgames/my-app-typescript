@@ -32,6 +32,13 @@ const todo = (from:number, to:number)=>{
 
 ## bug
 
+<img width="903" alt="F" src="https://github.com/user-attachments/assets/cdea4c43-52c1-46a9-95ca-07a1d71d2158">
+```tsx
+ const onFirstRender = () => {
+        dispatch(loadData);
+    }
+
+```
 file: src/pages/HomePage.tsx
 ```tsx
     
