@@ -8,15 +8,25 @@ import {Link, Outlet} from "react-router-dom";
 import AccountMenu from "./components/Menu";
 
 
-function App() {
+
+function App(props: any) {
+    const {state, dispatch} = props;
+
+    console.log(state);
+
+
+
   return (
     <>
-    <UserProvider>
-      <AccountMenu />
-      <Outlet  />
-      <ToastContainer />
-    </UserProvider>
-  </>
+      <UserProvider>
+        <AccountMenu/>
+
+
+
+        <Outlet/>
+        <ToastContainer/>
+      </UserProvider>
+    </>
   );
 }
 

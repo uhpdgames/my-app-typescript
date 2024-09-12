@@ -30,7 +30,7 @@ export default function AccountMenu() {
     <React.Fragment>
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
         <Stack spacing={2} direction="row">
-        <Button variant="text"><Link  underline="none" href='/'>Home</Link>  </Button>
+        <Button variant="text"><Link  underline="none" href='/'>Recipes</Link>  </Button>
            
             <Button variant="outlined"> <Link  underline="none" href='register'>Register</Link></Button>
             <Button variant="outlined"> <Link  underline="none" href='login'>Login</Link></Button>
