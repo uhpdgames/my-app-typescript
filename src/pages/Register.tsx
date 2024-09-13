@@ -3,7 +3,7 @@ import {
     Button,
     FormControl,
     FormLabel,
-    Link,
+
     TextField,
     Typography,
   } from "@mui/material";
@@ -14,6 +14,7 @@ import {
   import * as Yup from "yup";
   import { useAuth } from "../context/useAuth";
   import { yupResolver } from "@hookform/resolvers/yup";
+  import {Link} from "react-router-dom";
   
   type Props = {};
   
@@ -127,7 +128,7 @@ import {
             <Typography sx={{ textAlign: "center" }}>
               Already have an account?{" "}
               <span>
-                <Link href="login" variant="body2" sx={{ alignSelf: "center" }}>
+                <Link href="/login">
                   Sign in
                 </Link>
               </span>

@@ -7,7 +7,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import FormLabel from "@mui/material/FormLabel";
 import FormControl from "@mui/material/FormControl";
-import Link from "@mui/material/Link";
+import {Link} from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 
@@ -121,9 +121,7 @@ const Login = (props: Props) => {
             Don&apos;t have an account?{" "}
             <span>
               <Link
-                  href="register"
-                  variant="body2"
-                  sx={{alignSelf: "center"}}
+                  to="/register"
               >
                 Sign up
               </Link>
