@@ -60,7 +60,7 @@ const Login = (props: Props) => {
   };
 
   return (
-    <>
+      <main className="home-page custom-min-h pt-[32px]">
       <Card variant="outlined">
         <Typography
           component="h1"
@@ -129,7 +129,7 @@ const Login = (props: Props) => {
           </Typography>
         </Box>
       </Card>
-    </>
+    </main>
   );
 };
 

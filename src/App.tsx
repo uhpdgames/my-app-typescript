@@ -1,41 +1,41 @@
- 
-import { ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
- 
-import {UserProvider} from "./context/useAuth";
- 
-import {Link, Outlet} from "react-router-dom";
-import AccountMenu from "./components/Menu";
-import React    from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import todo from "./api/todo";
+import ViewSearchResult  from "./views/recipe/RecipeSearchPage";
+import ViewHome from "./views/home/HomePage";
+import BaseLayout from "./layouts/BaseLayout"
 
-function App(props: any) {
-   // const {state, dispatch} = props;
-
-   // console.log(state);
-
-    const [todos, setTodos] = React.useState([]);
-    const [from, to] = [0, 10];
-
-    React.useEffect(()=>{
-        todo(from, to).then((data:any)=>{
-            setTodos(data);
-        })
-    }, [todos])
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 
-  return (
-    <>
-      <UserProvider>
-        <AccountMenu/>
+const router = createBrowserRouter([
+    {
+        path: "/",
+        element: <BaseLayout />,
+        errorElement: '404 Not Found',
+        children: [
+            {
+                path: "/",
+                element: <ViewHome />,
+            },
+            {
+                path: "recipes/search",
+                element: <ViewSearchResult />,
+            },
+            {
+                path: 'login', element: <Login />,
+            },
+            {
+                path: 'register', element: <Register />,
+            },
+            {
+                path: '*',
+                element: '404 Not Found',
+            }
+        ],
+    },
+]);
 
-        <Outlet/>
-        <ToastContainer/>
-      </UserProvider>
-    </>
-  );
+export default function App() {
+    return <RouterProvider router={router} />;
 }
-
-export default App;
- 

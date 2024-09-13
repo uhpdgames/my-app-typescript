@@ -1,4 +1,5 @@
-import {createStore, combineReducers}     from "redux";
+import {createStore, combineReducers, applyMiddleware}     from "redux";
+import { thunk } from 'redux-thunk'
 
 import allRecipesData    from "../data/recipe";
 
@@ -62,31 +63,41 @@ export const allRecipesReducer = (state = initialAllRecipes, action:any) => {
         case LOAD_RECIPES:
             return action.payload;
 
-        default:
-            return state;
-    }
-}
-export const searchTermReducer = (state = initialAllRecipes, action:any) => {
-    switch (action.type) {
         case SET_SEARCH:
             return action.payload;
         case CLEAR_SEARCH:
             return '';
+
+        case ADD_RECIPE:
+            return [...state, action.payload]
+        case REMOVE_RECIPE:
+            return state.filter((recipe:any) => recipe.id !== action.payload.id)
         default:
             return state;
-    }
-}
-export const favoriteRecipesReducer = (favoriteRecipes = initialAllRecipes, action:any) => {
-    switch (action.type) {
-        case ADD_RECIPE:
-            return [...favoriteRecipes, action.payload]
-        case REMOVE_RECIPE:
-            return favoriteRecipes.filter((recipe:any) => recipe.id !== action.payload.id)
-        default:
-            return favoriteRecipes;
-    }
-}
 
+    }
+}
+// export const searchTermReducer = (state = initialAllRecipes, action:any) => {
+//     switch (action.type) {
+//         case SET_SEARCH:
+//             return action.payload;
+//         case CLEAR_SEARCH:
+//             return '';
+//         default:
+//             return state;
+//     }
+// }
+// export const favoriteRecipesReducer = (favoriteRecipes = initialAllRecipes, action:any) => {
+//     switch (action.type) {
+//         case ADD_RECIPE:
+//             return [...favoriteRecipes, action.payload]
+//         case REMOVE_RECIPE:
+//             return favoriteRecipes.filter((recipe:any) => recipe.id !== action.payload.id)
+//         default:
+//             return favoriteRecipes;
+//     }
+// }
+//
 
 // const dataRedure = (state = {}, action) => {
 //     const nextState = {
@@ -100,10 +111,16 @@ export const favoriteRecipesReducer = (favoriteRecipes = initialAllRecipes, acti
 
 
 
-const reducers ={
-    allRecipes: allRecipesReducer,
-    searchTerm: searchTermReducer,
-    favoriteRecipes: favoriteRecipesReducer,
-};
 
-export const  storeRecipe = createStore(combineReducers(reducers));
+// const store = createStore(rootReducer, applyMiddleware(apiMiddleware));
+// //window.store = store;
+// export default store;
+
+// const reducers = {
+//     allRecipes: allRecipesReducer,
+//     searchTerm: searchTermReducer,
+//     favoriteRecipes: favoriteRecipesReducer,
+// };
+const  storeRecipe = createStore(allRecipesReducer, applyMiddleware(thunk));
+
+export default storeRecipe;

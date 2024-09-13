@@ -9,11 +9,15 @@ const favoriteIconURL = 'https://static-assets.codecademy.com/Courses/Learn-Redu
 
 const AllRecipes = (props: any) => {
 
-    const { allRecipes, dispatch } = props;
+    const { state, dispatch } = props;
+    const allRecipes = state.getState();
+
+    console.log(allRecipes);
 
     const onFirstRender = () => {
-       // dispatch(loadData);
+       dispatch(loadData);
     }
+
     useEffect(onFirstRender, [])
 
     const onAddRecipeHandler = (recipe:any) => {

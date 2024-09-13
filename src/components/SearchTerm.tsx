@@ -16,7 +16,7 @@ const SearchTerm = (props:any) => {
     };
 
     const onClearSearchTermHandler = () => {
-        //dispatch(clearSearchTerm());
+        dispatch(clearSearchTerm);
     };
 
     return (
