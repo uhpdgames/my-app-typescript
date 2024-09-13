@@ -80,6 +80,7 @@ const Login = (props: Props) => {
             gap: 2,
           }}
         >
+
           <FormControl>
             <FormLabel htmlFor="userName">userName</FormLabel>
             <TextField
@@ -115,13 +116,14 @@ const Login = (props: Props) => {
           <Button type="submit" fullWidth variant="contained">
             Sign in
           </Button>
-          <Typography sx={{ textAlign: "center" }}>
+          <Typography sx={{textAlign: "center"}}>
+            <em>id: test | pass: test</em><br/>
             Don&apos;t have an account?{" "}
             <span>
               <Link
-                href="register"
-                variant="body2"
-                sx={{ alignSelf: "center" }}
+                  href="register"
+                  variant="body2"
+                  sx={{alignSelf: "center"}}
               >
                 Sign up
               </Link>
@@ -129,7 +131,7 @@ const Login = (props: Props) => {
           </Typography>
         </Box>
       </Card>
-    </main>
+      </main>
   );
 };
 

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const RecipeItem = ({ recipe }:any) => {
   const { image, name, cuisineType, mealType, id, calories } = recipe || {};
-  console.log(recipe)
+
   return (
     <div className="recipe-list-item group">
       <div className="recipe-item-top">

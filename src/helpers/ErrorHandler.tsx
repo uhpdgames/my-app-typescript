@@ -19,16 +19,17 @@ export const  handleError = (error: any) => {
             }
         }
         else if(typeof err?.data.error === 'string'){
-            toast.warning(err.data.error);
+          toast.warning(err.data.error);
+           // toast.success('Can not conect to server, this is the test' );
         }
         else if(err?.data){
-            toast.warning(err?.data);
+           // toast.warning(err?.data);
         }else if(err?.status == 401){
             toast.warning("Login ?");
         }else if(err){
             toast.warning(err?.data);
         }
-
+        toast.error("Can not connect to server" );
         // if(error.response){
         //     console.log(error.response.data);
         //     console.log(error.response.status);

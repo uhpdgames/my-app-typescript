@@ -28,6 +28,14 @@ import MenuItem from '@mui/material/MenuItem';
 import Drawer from '@mui/material/Drawer';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+ import Tooltip from "@mui/material/Tooltip";
+ import Avatar from "@mui/material/Avatar";
+ import {useEffect, useState} from "react";
+ import {UserProfile} from "../../models/User";
+ import Menu from "@mui/material/Menu";
+ import ListItemIcon from "@mui/material/ListItemIcon";
+ import Logout from "@mui/icons-material/Logout";
+ import {useAuth} from "../../context/useAuth";
 
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
@@ -45,11 +53,123 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
 }));
 
 export default function AppAppBar() {
+    const { logout } = useAuth();
+
     const [open, setOpen] = React.useState(false);
+
+    const [isLogin, setIsLogin] = useState<boolean>(false);
+    const [token, setToken] = useState<string | null>(null);
+    const [user, setUser] = useState<UserProfile | null>(null);
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        const user = localStorage.getItem('user');
+        if(token && user){
+            setToken(token);
+            setUser(JSON.parse(user));
+            setIsLogin(true);
+        }
+    } , [])
+
 
     const toggleDrawer = (newOpen: boolean) => () => {
         setOpen(newOpen);
     };
+
+    const Profiles = () => {
+        const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+        const openz = Boolean(anchorEl);
+        const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+            setAnchorEl(event.currentTarget);
+        };
+        const handleClose = () => {
+            setAnchorEl(null);
+        };
+
+
+
+        if(isLogin){
+            return (
+                <>
+                    <Tooltip title="Account settings">
+                        <IconButton
+                            onClick={handleClick}
+                            size="small"
+                            sx={{ ml: 2 }}
+                            aria-controls={openz ? 'account-menu' : undefined}
+                            aria-haspopup="true"
+                            aria-expanded={openz ? 'true' : undefined}
+                        >
+                            <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
+                        </IconButton>
+                    </Tooltip>
+
+                    <Menu
+                        anchorEl={anchorEl}
+                        id="account-menu"
+                        open={openz}
+                        onClose={handleClose}
+                        onClick={handleClose}
+                        slotProps={{
+                            paper: {
+                                elevation: 0,
+                                sx: {
+                                    overflow: 'visible',
+                                    filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+                                    mt: 1.5,
+                                    '& .MuiAvatar-root': {
+                                        width: 32,
+                                        height: 32,
+                                        ml: -0.5,
+                                        mr: 1,
+                                    },
+                                    '&::before': {
+                                        content: '""',
+                                        display: 'block',
+                                        position: 'absolute',
+                                        top: 0,
+                                        right: 14,
+                                        width: 10,
+                                        height: 10,
+                                        bgcolor: 'background.paper',
+                                        transform: 'translateY(-50%) rotate(45deg)',
+                                        zIndex: 0,
+                                    },
+                                },
+                            },
+                        }}
+                        transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+                        anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+                    >
+                        <MenuItem onClick={handleClose}>
+                            <Avatar /> Profile
+                        </MenuItem>
+
+                        <Divider />
+
+
+                        <MenuItem onClick={handleClose}>
+                            <ListItemIcon>
+                                <Logout fontSize="small" />
+                            </ListItemIcon>
+                            <button onClick={()=>logout()}>Logout</button>
+                        </MenuItem>
+                    </Menu>
+                </>
+            )
+        }else{
+            return (
+               <>
+                   <Button href='/login' color="primary" variant="text" size="small">
+                       Sign in
+                   </Button>
+                   <Button href='/register' color="primary" variant="contained" size="small">
+                       Sign up
+                   </Button>
+               </>
+            )
+        }
+    }
 
     return (
         <AppBar
@@ -75,12 +195,8 @@ export default function AppAppBar() {
                             alignItems: 'center',
                         }}
                     >
-                        <Button href='/login' color="primary" variant="text" size="small">
-                            Sign in
-                        </Button>
-                        <Button href='/register' color="primary" variant="contained" size="small">
-                            Sign up
-                        </Button>
+                        <Profiles />
+
                     </Box>
                     <Box sx={{ display: { sm: 'flex', md: 'none' } }}>
                         <IconButton aria-label="Menu button" onClick={toggleDrawer(true)}>

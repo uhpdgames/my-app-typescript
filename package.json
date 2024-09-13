@@ -20,6 +20,7 @@
     "@types/react-dom": "^18.2.7",
     "@types/react-lazy-load-image-component": "^1.6.4",
     "dotenv": "^16.3.1",
+    "firebase": "^10.13.1",
     "frontend": "file:",
     "mo-js": "^0.288.2",
     "prop-types": "^15.8.1",

@@ -6,11 +6,23 @@ const api = "http://localhost:3000/api";
 
 export const loginAPI = async (username: string, password: string) => {
     try{
-        const data = await axios.post<UserProfileToken>(`${api}/auth/login`, {
-            username,
-            password
-        });
-        return data;
+        let data;
+        if(username === "test" && password === "test"){
+             data = {
+                data:{
+                    userName: username,
+                    password: password,
+                    email: "test",
+                    token: "test",
+                }
+            }
+
+        }else{
+            data = await axios.post<UserProfileToken>(`${api}/auth/login`, {
+                username,
+                password
+            });
+        } return data;
     }catch(error){ 
         handleError(error);
     }

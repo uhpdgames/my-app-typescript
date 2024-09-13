@@ -2,7 +2,7 @@ import {UserProfile} from '../models/User';
 import {createContext, useEffect, useState, useContext} from 'react';
 import { loginAPI, registerAPI } from '../services/auth';
 import {toast} from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, redirect  } from "react-router-dom";
 
 import axios from 'axios';
 
@@ -55,6 +55,7 @@ export const UserProvider = ({children}:Props) => {
                 setToken(res?.data.token);
                 setUser(objUser);
                 navigate('/');
+                redirect("/");
             }
         }).catch((error) => {
 
@@ -66,6 +67,8 @@ export const UserProvider = ({children}:Props) => {
     
         await loginAPI(username, password).then((res) => {
             if(res){
+                console.log(username)
+                console.log(password)
                 localStorage.setItem('token', res?.data.token);
 
                 const objUser = {
@@ -78,6 +81,7 @@ export const UserProvider = ({children}:Props) => {
                 setToken(res?.data.token);
                 setUser(objUser);
                 navigate('/');
+                redirect("/");
             }
         }).catch((error) => {
 
@@ -97,6 +101,7 @@ export const UserProvider = ({children}:Props) => {
         setUser(null);
       
         navigate('/');
+        redirect("/");
 
     }
 
