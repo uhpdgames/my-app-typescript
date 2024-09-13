@@ -22,6 +22,7 @@
     "dotenv": "^16.3.1",
     "firebase": "^10.13.1",
     "frontend": "file:",
+    "gh-pages": "^6.1.1",
     "mo-js": "^0.288.2",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
@@ -47,7 +48,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -74,5 +77,8 @@
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.45",
     "tailwindcss": "^3.4.11"
-  }
+  },
+
+  "homepage": "https://uhpdgames.github.io/my-app-typescript/"
+
 }
