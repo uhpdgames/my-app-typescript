@@ -19,7 +19,7 @@ const Searchbar = () => {
       dispatch(search);
       dispatch(setSearchQuery(queryText));
       setQueryText("");
-      navigate("/recipes/search");
+      navigate("/my-app-typescript/recipes/search");
     } else {
       setError("Please enter search term.");
     }

@@ -10,7 +10,7 @@ import Register from "./pages/Register";
 
 const router = createBrowserRouter([
     {
-        path: "my-app-typescript",
+        path: "/",
         element: <BaseLayout />,
         errorElement: '404 Not Found',
         children: [
