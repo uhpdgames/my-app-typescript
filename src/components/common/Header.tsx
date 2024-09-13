@@ -36,6 +36,7 @@ import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
  import ListItemIcon from "@mui/material/ListItemIcon";
  import Logout from "@mui/icons-material/Logout";
  import {useAuth} from "../../context/useAuth";
+ import { Link } from "react-router-dom";
 
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
@@ -160,12 +161,14 @@ export default function AppAppBar() {
         }else{
             return (
                <>
-                   <Button href='/login' color="primary" variant="text" size="small">
-                       Sign in
+                   <Button  color="primary" variant="text" size="small" >
+                       <Link to="login"  color="primary" >Login</Link>
                    </Button>
-                   <Button href='/register' color="primary" variant="contained" size="small">
-                       Sign up
+                   <Button  color="primary" variant="contained" size="small" >
+                       <Link to="register"  color="primary" >Sign in</Link>
                    </Button>
+
+
                </>
             )
         }
@@ -219,14 +222,17 @@ export default function AppAppBar() {
 
                                 <Navbar />
                                 <MenuItem>
-                                    <Button href='/register' color="primary" variant="contained" fullWidth>
-                                        Sign up
-                                    </Button>
+                                    <Link to="register"  color="primary" >Login</Link>
+                                    {/*<Button href='/register' color="primary" variant="contained" fullWidth>*/}
+                                    {/*    Sign up*/}
+                                    {/*</Button>*/}
                                 </MenuItem>
                                 <MenuItem>
-                                    <Button href='/login' color="primary" variant="outlined" fullWidth>
-                                        Sign in
-                                    </Button>
+
+                                    <Link to="login"  color="primary" >Register</Link>
+                                    {/*<Button href='/login' color="primary" variant="outlined" fullWidth>*/}
+                                    {/*    Sign in*/}
+                                    {/*</Button>*/}
                                 </MenuItem>
                             </Box>
                         </Drawer>

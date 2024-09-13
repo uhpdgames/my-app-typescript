@@ -12,8 +12,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Divider from "@mui/material/Divider";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import Logout from "@mui/icons-material/Logout";
-
-import Link from '@mui/material/Link';
+import {Link} from "react-router-dom";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {UserProfile} from "../../models/User";
@@ -53,7 +52,7 @@ const Navbar = () => {
       <React.Fragment>
         <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
           <Stack spacing={2} direction="row">
-            <Button variant="text"><Link  underline="none" href='/'>Recipes</Link>  </Button>
+            <Button variant="text"><Link  to='/'>Recipes</Link>  </Button>
             {/*<Button variant="outlined"> <Link  underline="none" href='register'>Register</Link></Button>*/}
             {/*<Button variant="outlined"> <Link  underline="none" href='login'>Login</Link></Button>*/}
           </Stack>

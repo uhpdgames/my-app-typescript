@@ -16,7 +16,7 @@ import Link from '@mui/material/Link';
  import {Link as LinkTo} from "react-router-dom";
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-
+import { Link as Link2 } from "react-router-dom";
 export default function AccountMenu() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -30,10 +30,11 @@ export default function AccountMenu() {
     <React.Fragment>
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
         <Stack spacing={2} direction="row">
-        <Button variant="text"><Link  underline="none" href='/'>Recipes</Link>  </Button>
+
+        <Button variant="text"> <Link2  to="/"> Recipes </Link2></Button>
            
-            <Button variant="outlined"> <Link  underline="none" href='register'>Register</Link></Button>
-            <Button variant="outlined"> <Link  underline="none" href='login'>Login</Link></Button>
+            <Button variant="outlined"> <Link2   to='register'>Register</Link2></Button>
+            <Button variant="outlined"> <Link2   to='login'>Login</Link2></Button>
         </Stack>
         <Tooltip title="Account settings">
           <IconButton

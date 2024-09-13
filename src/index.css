@@ -48,6 +48,9 @@ body,
 p.text-white{
     color: red;
 }
+a.primary{
+    color:red!important;
+}
 #search-clear-button {
     position: absolute;
     right: 42px;
