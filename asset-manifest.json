@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/my-app-typescript/static/css/main.15bdc252.css",
-    "main.js": "/my-app-typescript/static/js/main.1a7a8345.js",
+    "main.js": "/my-app-typescript/static/js/main.ed4fb9c7.js",
     "static/media/food_bg_one.jpg": "/my-app-typescript/static/media/food_bg_one.9e4782aa08ca3a77a591.jpg",
     "static/media/food_bg_two.jpg": "/my-app-typescript/static/media/food_bg_two.59aa942c5a9857de9de9.jpg",
     "static/media/slider_img_2.jpg": "/my-app-typescript/static/media/slider_img_2.74ba78c5c7e16b0b9804.jpg",
@@ -36,10 +36,10 @@
     "static/media/error_404.png": "/my-app-typescript/static/media/error_404.6402c48e72ac5fe3e0e0.png",
     "index.html": "/my-app-typescript/index.html",
     "main.15bdc252.css.map": "/my-app-typescript/static/css/main.15bdc252.css.map",
-    "main.1a7a8345.js.map": "/my-app-typescript/static/js/main.1a7a8345.js.map"
+    "main.ed4fb9c7.js.map": "/my-app-typescript/static/js/main.ed4fb9c7.js.map"
   },
   "entrypoints": [
     "static/css/main.15bdc252.css",
-    "static/js/main.1a7a8345.js"
+    "static/js/main.ed4fb9c7.js"
   ]
 }
