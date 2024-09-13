@@ -15,7 +15,7 @@ import {
   import { useAuth } from "../context/useAuth";
   import { yupResolver } from "@hookform/resolvers/yup";
   import {Link} from "react-router-dom";
-  
+
   type Props = {};
   
   type RegisterFormsInputs = {
@@ -128,7 +128,7 @@ import {
             <Typography sx={{ textAlign: "center" }}>
               Already have an account?{" "}
               <span>
-                <Link href="/login">
+                <Link to="/login">
                   Sign in
                 </Link>
               </span>
