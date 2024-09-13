@@ -160,10 +160,10 @@ export default function AppAppBar() {
         }else{
             return (
                <>
-                   <Button href='https://uhpdgames.github.io/my-app-typescript/login' color="primary" variant="text" size="small">
+                   <Button href='/login' color="primary" variant="text" size="small">
                        Sign in
                    </Button>
-                   <Button href='https://uhpdgames.github.io/my-app-typescript/register' color="primary" variant="contained" size="small">
+                   <Button href='/register' color="primary" variant="contained" size="small">
                        Sign up
                    </Button>
                </>
@@ -219,12 +219,12 @@ export default function AppAppBar() {
 
                                 <Navbar />
                                 <MenuItem>
-                                    <Button href='https://uhpdgames.github.io/my-app-typescript/register' color="primary" variant="contained" fullWidth>
+                                    <Button href='/register' color="primary" variant="contained" fullWidth>
                                         Sign up
                                     </Button>
                                 </MenuItem>
                                 <MenuItem>
-                                    <Button href='https://uhpdgames.github.io/my-app-typescript/login' color="primary" variant="outlined" fullWidth>
+                                    <Button href='/login' color="primary" variant="outlined" fullWidth>
                                         Sign in
                                     </Button>
                                 </MenuItem>

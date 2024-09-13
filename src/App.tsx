@@ -10,7 +10,7 @@ import Register from "./pages/Register";
 
 const router = createBrowserRouter([
     {
-        path: "my-app-typescript",
+        path: "/",
         element: <BaseLayout />,
         errorElement: '404 Not Found',
         children: [
@@ -19,7 +19,7 @@ const router = createBrowserRouter([
                 element: <ViewHome />,
             },
             {
-                path: "my-app-typescript/recipes/search",
+                path: "recipes/search",
                 element: <ViewSearchResult />,
             },
             {
