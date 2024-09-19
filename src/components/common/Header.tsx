@@ -37,6 +37,7 @@ import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
  import Logout from "@mui/icons-material/Logout";
  import {useAuth} from "../../context/useAuth";
  import { Link } from "react-router-dom";
+ import Grid from '@mui/material/Grid2';
 
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
@@ -201,8 +202,15 @@ export default function AppAppBar() {
                         <Profiles />
 
                     </Box>
-                    <Box sx={{ display: { sm: 'flex', md: 'none' } }}>
-                        <IconButton aria-label="Menu button" onClick={toggleDrawer(true)}>
+                   
+                    <Box sx={{ display: { sm: 'block', md: 'none' } }}>
+                    <Grid container spacing={2}>
+  <Grid size={10}>
+  <Searchbar  />
+  </Grid>
+  <Grid size={2}>
+    
+  <IconButton aria-label="Menu button" onClick={toggleDrawer(true)}>
                             <MenuIcon />
                         </IconButton>
                         <Drawer anchor="top" open={open} onClose={toggleDrawer(false)}>
@@ -236,6 +244,9 @@ export default function AppAppBar() {
                                 </MenuItem>
                             </Box>
                         </Drawer>
+  </Grid>
+   
+</Grid>
                     </Box>
                 </StyledToolbar>
             </Container>

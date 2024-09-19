@@ -11,6 +11,7 @@ import {LOAD_RECIPES, loadData} from "../redux/storeRecipe";
 import allRecipesData from "../data/recipe";
 import {Dispatch, Store} from "redux";
 import {useDispatch, useSelector, useStore,} from "react-redux";
+import {selectSingleRecipe} from "../redux/store/recipesSlice";
 
 
 //type Props = {};
@@ -18,7 +19,9 @@ const HomePage = (props: any) => {
     const dispatch: Dispatch<any> = useDispatch()
     const store: Store<any> = useStore();
 
-    console.log(store);
+    const search = useSelector(selectSingleRecipe);
+      
+    console.log(search);
 
     //fixed bug
     //state.allRecipes = state.allRecipes.length > 0 ? state.allRecipes : allRecipesData;

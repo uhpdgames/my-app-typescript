@@ -1,8 +1,4 @@
-import PropTypes from "prop-types";
-import { AiOutlineArrowRight } from "react-icons/ai";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-
-import { Link } from "react-router-dom";
 
 const RecipeItem = ({ recipe }:any) => {
   const { image, name, cuisineType, mealType, id, calories } = recipe || {};
@@ -15,21 +11,19 @@ const RecipeItem = ({ recipe }:any) => {
         <LazyLoadImage
             alt={name}
             className="recipe-item-img group-hover:scale-125"
-            src={image} // use normal <img> attributes as props
+            src={image}
           />
 
       </div>
       <div className="recipe-item-bottom">
         <div className="p-4">
           <h3 className="recipe-item-name">{name}</h3>
-          <ul className="recipe-item-info">
+          <ul>
             <li>
-              <span>Cuisine: &nbsp;</span>
-              <span>{cuisineType || "Unknown"}</span>
+              <span>calories: &nbsp;</span>
+              <span>{Math.round(calories) ||0}</span>
             </li>
-            <li>
-              <span>{mealType || "Unknown"}</span>
-            </li>
+    
           </ul>
         </div>
 
@@ -39,13 +33,4 @@ const RecipeItem = ({ recipe }:any) => {
 };
 
 export default RecipeItem;
-
-RecipeItem.propTypes = {
-  recipe: PropTypes.shape({
-    image: PropTypes.string,
-    name: PropTypes.string.isRequired,
-    cuisineType: PropTypes.array,
-    mealType: PropTypes.array,
-    id: PropTypes.string.isRequired,
-  }),
-};
+ 

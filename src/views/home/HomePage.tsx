@@ -18,7 +18,7 @@ const HomePage = () => {
   const recipesError = useSelector(getRecipesError);
 
   useEffect(() => {
-      // @ts-ignore
+    // @ts-ignore
     dispatch(fetchRecipes());
   }, [dispatch]);
 
@@ -46,7 +46,7 @@ const HomePage = () => {
           ) : STATUS.FAILED === recipesStatus ? (
             <div>{recipesError}</div>
           ) : (
-            <RecipeList recipes={recipes} recipesLength={12}></RecipeList>
+            <RecipeList recipes={recipes}></RecipeList>
           )}
         </div>
       </section>

@@ -1,6 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { APP_ID, APP_KEY } from "../../api/apiConstants";
 import fetchData from "../../api/axios";
+//
 import {
   extractRecipeData,
   extractSingleRecipeData,
@@ -8,7 +9,7 @@ import {
 
 export const fetchRecipes = createAsyncThunk(
   "recipes/fetchRecipes",
-  async (queryText) => {
+  async (queryText:any) => {
     try {
       const { data } = await fetchData(
         `?type=public&app_id=${APP_ID}&app_key=${APP_KEY}&q=${queryText}`

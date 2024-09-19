@@ -7,13 +7,14 @@ import {
   getRecipesNextPage,
   clearSearch,
 } from "../../redux/store/recipesSlice";
-import { useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { scrollToTop } from "../../utils/scrollToTop";
 import { fetchSearchRecipe } from "../../redux/utils/recipeUtils";
 import { no_results } from "../../utils/images";
 import { AiOutlineClose } from "react-icons/ai";
 import { STATUS } from "../../utils/status";
 import { RecipeList } from "../../components/recipes";
+import Search from "../../components/common/Search";
 
 const RecipeSearchPage = () => {
   const dispatch = useDispatch();
@@ -23,13 +24,28 @@ const RecipeSearchPage = () => {
   const searchError = useSelector(getRecipesError);
   const nextPageLink = useSelector(getRecipesNextPage);
 
-  useEffect(() => scrollToTop(), []);
+
+  
+  const [results, setResults] = useState([]);
+
+  useEffect(() => {
+    scrollToTop() 
+
+    setResults(searchRecipes);
+  }, []);
 
   useEffect(() => {
     // @ts-ignore
     dispatch(fetchSearchRecipe({ queryText, nextPageLink }));
-
+    console.log(searchRecipes)
   }, [queryText, dispatch]);
+
+
+
+  const handleChange = useCallback((event:any) => {
+    const filrerRecipes = searchRecipes.filter((recipe:any) => recipe.name.toLowerCase().includes(event.target.value.toLowerCase()));
+    setResults(filrerRecipes)
+  }, [searchRecipes]);
 
   if (!searchRecipes || searchRecipes.length === 0) {
     return (
@@ -59,23 +75,13 @@ const RecipeSearchPage = () => {
             ) : STATUS.FAILED === searchStatus ? (
               searchError
             ) : (
-              <RecipeList recipes={searchRecipes} />
+             <>
+                 <Search onChange = { handleChange } />
+                 <RecipeList recipes={results} />
+             </>
             )}
 
-            {nextPageLink?.length > 0 && (
-              <div className="next-button">
-                <button
-                  className="next-page-btn"
-                  type="button"
-                  onClick={() =>
-                      // @ts-ignore
-                      dispatch( fetchSearchRecipe({ queryText: "", nextPageLink: nextPageLink, }) )
-                  }
-                >
-                  Next Page
-                </button>
-              </div>
-            )}
+           
           </div>
         </div>
       </section>

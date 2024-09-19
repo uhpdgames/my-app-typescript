@@ -1,41 +1,54 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { BsSearch } from "react-icons/bs";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setSearchQuery } from "../../redux/store/recipesSlice";
+import { selectAllRecipes, setSearchQuery } from "../../redux/store/recipesSlice";
 import { fetchSearchRecipe } from "../../redux/utils/recipeUtils";
+import Search from "./Search";
 
 const Searchbar = () => {
   const [error, setError] = useState("");
   const [queryText, setQueryText] = useState("");
+
+  const [searchResults, setSearchResults] = useState<any[]>([]);
+
+  const allRecipes = useSelector(selectAllRecipes);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const handleSubmit = (event:any) => {
-    event.preventDefault();
-    const search = fetchSearchRecipe({ queryText:null, nextPageLink: null });
+  const handleSubmit =  (e:any) => {
+    e.preventDefault();
+
     if (queryText.trim().length > 0) {
-      // @ts-ignore
-      dispatch(search);
+      dispatch(fetchSearchRecipe({ queryText }) as any);
       dispatch(setSearchQuery(queryText));
-      setQueryText("");
+     // setQueryText("");
       navigate("/recipes/search");
     } else {
       setError("Please enter search term.");
     }
-  };
+    
+  }
+ 
+//  console.log('allRecipes', allRecipes );
 
-  const handleChange = (event:any) => {
+  //search input changes
+  const handleChange = useCallback((event:any) => {
     setQueryText(event.target.value);
     if (event.target.value.length === 0) {
       setError("Please enter search term.");
     }
-  };
+
+
+    console.log(event.target.value);
+
+
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setError("");
-    }, 1000);
+    }, 250);
 
     return () => {
       clearTimeout(timer);
@@ -44,14 +57,8 @@ const Searchbar = () => {
 
   return (
     <form className="search-bar" onSubmit={handleSubmit}>
-      <input
-        type="text"
-        id="query"
-        name="query"
-        onChange={handleChange}
-        placeholder="Search recipe here ..."
-        value = {queryText}
-      />
+     <Search onChange={ handleChange }/>
+
       <button type="submit" className="search-btn">
         <BsSearch className="text-white" size={16} />
       </button>
